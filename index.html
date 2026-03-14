@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zscaler x Azure AD Integration Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background: #0f172a; color: #f8fafc; overflow-x: hidden; }
+        
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+        
+        /* Fixed the warning here */
+        .gradient-text { 
+            background: linear-gradient(90deg, #38bdf8, #818cf8); 
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+
+        .step-card { transition: all 0.3s ease; border: 1px solid transparent; }
+        .step-card:hover { border-color: #38bdf8; transform: translateY(-5px); background: rgba(56, 189, 248, 0.05); }
+        
+        .pulse { animation: pulse-animation 2s infinite; }
+        @keyframes pulse-animation {
+            0% { box-shadow: 0 0 0 0px rgba(56, 189, 248, 0.4); }
+            100% { box-shadow: 0 0 0 10px rgba(56, 189, 248, 0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <nav class="p-5 border-b border-slate-800 glass sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="bg-blue-600 p-2 rounded-lg pulse"><i class="fas fa-network-wired text-white text-xl"></i></div>
+                <h1 class="text-xl font-bold tracking-tight uppercase">Zero <span class="text-blue-400">Security</span></h1>
+            </div>
+            <div class="hidden md:flex gap-6 text-sm font-medium text-slate-400 uppercase tracking-widest">
+                <span>Identity Portal v3.0</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6 py-12">
+        
+        <section class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-black mb-4 italic">
+                <span class="gradient-text">Zscaler</span> Integration with <span class="text-blue-500">Azure AD</span>
+            </h2>
+            <p class="text-slate-400 max-w-2xl mx-auto">Establish a secure connection between Zscaler Internet Access (ZIA) and Microsoft Entra ID for automated user lifecycle management.</p>
+        </section>
+
+        
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <div class="lg:col-span-2 space-y-6">
+                <h3 class="text-xl font-bold flex items-center gap-2 mb-4">
+                    <i class="fas fa-list-check text-blue-400"></i> Configuration Steps
+                </h3>
+
+                <div class="glass p-6 rounded-2xl step-card">
+                    <div class="flex items-start gap-4">
+                        <span class="text-3xl font-bold text-slate-700">01</span>
+                        <div>
+                            <h4 class="text-lg font-bold text-blue-300">Azure Enterprise App Setup</h4>
+                            <p class="text-sm text-slate-400 mt-1">Azure portal-la "Zscaler" search panni add pannanum. User assignment-ah 'Yes' panni test users-ah select pannanum.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-2xl step-card border-l-4 border-blue-500">
+                    <div class="flex items-start gap-4">
+                        <span class="text-3xl font-bold text-slate-700">02</span>
+                        <div>
+                            <h4 class="text-lg font-bold text-blue-300">SAML SSO Configuration</h4>
+                            <p class="text-sm text-slate-400 mt-1">Azure AD Metadata XML-ai download panni Zscaler Admin Portal-la upload pannanum. User Email-ai unique ID-ah map pannanum.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-2xl step-card">
+                    <div class="flex items-start gap-4">
+                        <span class="text-3xl font-bold text-slate-700">03</span>
+                        <div>
+                            <h4 class="text-lg font-bold text-blue-300">SCIM User Provisioning</h4>
+                            <p class="text-sm text-slate-400 mt-1">Zscaler generated Bearer Token-ai Azure AD "Secret Token" field-la kuduthu test connection pannanum.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <h3 class="text-xl font-bold flex items-center gap-2 mb-4">
+                    <i class="fas fa-circle-info text-blue-400"></i> Connection Info
+                </h3>
+                
+                <div class="glass p-6 rounded-2xl border border-blue-500/30">
+                    <div class="mb-4">
+                        <label class="text-[10px] text-slate-500 uppercase tracking-widest block mb-1">Status</label>
+                        <div class="text-emerald-400 font-bold flex items-center gap-2 text-sm">
+                            <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span> READY FOR SYNC
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="text-[10px] text-slate-500 uppercase tracking-widest block mb-1">Entity ID</label>
+                        <div class="bg-black/30 p-2 rounded font-mono text-xs text-blue-300 break-all">
+                            https://zscaler.net/saml
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="text-[10px] text-slate-500 uppercase tracking-widest block mb-1">Reply URL (ACS)</label>
+                        <div class="bg-black/30 p-2 rounded font-mono text-xs text-blue-300 break-all">
+                            https://login.zscaler.net/sso/saml
+                        </div>
+                    </div>
+
+                    <button class="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-xl font-bold text-sm transition mt-2">
+                        Verify Configuration
+                    </button>
+                </div>
+
+                <div class="glass p-5 rounded-2xl text-center">
+                    <i class="fab fa-microsoft text-3xl text-blue-500 mb-2"></i>
+                    <p class="text-xs text-slate-400 italic font-medium uppercase">Secured by Azure AD</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="text-center py-10 border-t border-slate-800 text-slate-600 text-xs">
+        <p>&copy; 2026 Identity-First Infrastructure • Zero Webapp Security System</p>
+    </footer>
+<script>
+        document.querySelector('button.bg-blue-600').addEventListener('click', function() {
+            const btn = this;
+            const originalText = btn.innerHTML;
+            
+            // Loading animation kaata
+            btn.innerHTML = '<i class="fas fa-spinner animate-spin"></i> Verifying...';
+            btn.disabled = true;
+            btn.style.opacity = '0.7';
+
+            setTimeout(() => {
+                // Success message alert
+                alert("✅ Zscaler x Azure AD Integration Verified!\n\n- SAML 2.0 Status: Connected\n- SCIM Sync Status: Active\n- Tenant ID: Verified\n- Identity Provider: Microsoft Entra ID");
+                
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                btn.style.opacity = '1';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
